@@ -1,0 +1,141 @@
+
+/*colores de toda la página*/
+:root {
+  --background: #170e2b;
+  --background-light: #25143e;
+  --purple: #a879f5;
+  --purple-light: #d9c2ff;
+  --gold: #ffc978;
+  --white: #fff8ff;
+  --muted: #b8a9cf;
+}
+
+/* configuración general */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--background);
+}
+
+/*fondo y la letra de la página */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 5%,
+      #382052 0%,
+      #211336 45%,
+      #10091e 100%
+    );
+
+  color: var(--white);
+  font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+/*centramos el contenido principal*/
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 30px 16px 40px;
+}
+
+/* Ajustes del lienzo donde se dibuja el monstruo */
+canvas {
+  display: block;
+  width: 640px;
+  height: 480px;
+  max-width: 95vw;
+  height: auto;
+  border: 2px solid rgba(190, 150, 255, 0.5);
+  border-radius: 22px;
+  box-shadow:
+    0 0 20px rgba(153, 100, 255, 0.12),
+    0 0 45px rgba(153, 100, 255, 0.08),
+    0 18px 45px rgba(0, 0, 0, 0.35);
+}
+
+/*Estilo del botón para activar la cámara */
+button {
+  border: 1px solid rgba(255, 220, 170, 0.7);
+  border-radius: 999px;
+
+  padding: 13px 25px;
+
+  background: linear-gradient(
+    135deg,
+    #d2b6ff,
+    #a879f5 55%,
+    #8b61d9
+  );
+
+  color: #211334;
+
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 20px rgba(165, 115, 255, 0.25);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+/*efecto cuando pasamos el ratón por encima*/
+button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+
+  box-shadow:
+    0 8px 28px rgba(165, 115, 255, 0.4);
+}
+
+/* efecto al pulsar el botón */
+button:active {
+  transform: translateY(0);
+}
+
+/*Resaltar botón cuando se selecciona con el teclado */
+button:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 4px;
+}
+
+/*Estilo párrafos */
+p {
+  line-height: 1.6;
+}
+
+/* adaptamos la página a pantallas pequeñas */
+@media (max-width: 700px) {
+  main {
+    padding: 16px 8px 24px;
+  }
+
+  canvas {
+    width: 96vw !important;
+    border-radius: 14px;
+  }
+
+  button {
+    font-size: 13px;
+    padding: 11px 20px;
+  }
+}

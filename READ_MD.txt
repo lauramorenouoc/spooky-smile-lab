@@ -1,0 +1,22 @@
+# Spooky Smile Lab — Aplicación de escritorio
+
+
+La aplicación puede ser iniciada tras haber instalado el archivo .exe que he añadido a la carpeta o de la siguiente manera:
+
+## Requisitos
+- Node.js y npm instalados.
+- Los requisitos de desarrollo de Tauri para Windows.
+
+## Cómo ejecutar la aplicación
+
+1. Abrir una terminal en la carpeta raíz del proyecto `spooky-smile-desktop`.
+2. Instalar las dependencias:
+
+   "npm install"
+
+3. Ejecutar la aplicación en modo desarrollo:
+
+"npm run tauri dev"
+
+La aplicación se abre en una ventana de escritorio a pantalla completa, configurada para una resolución de 1920 × 1080.
+

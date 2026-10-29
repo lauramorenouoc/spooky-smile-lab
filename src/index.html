@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+
+    <title>Spooky Smile Lab</title>
+
+    <!-- cargamos p5.js para dibujar y animar el proyecto -->
+    <script src="./p5.js"></script>
+    <script src="./p5.sound.min.js"></script>
+      npm.cmd run tauri dev
+    </script>
+
+    <!-- conectamos los estilos de la página -->
+    <link rel="stylesheet" href="style.css">
+
+    <script type="module">
+      import {
+        FaceLandmarker,
+        FilesetResolver
+      } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@latest/vision_bundle.mjs";
+
+      //cargamos MediaPipe y el modelo para detectar la cara
+      window.mediaPipeReady = (async function () {
+        const vision = await FilesetResolver.forVisionTasks(
+          "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@latest/wasm"
+        );
+
+        // preparamos la detección facial
+        const faceLandmarker = await FaceLandmarker.createFromOptions(
+          vision,
+          {
+            baseOptions: {
+              modelAssetPath:
+                "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task"
+            },
+            runningMode: "VIDEO",
+            numFaces: 1,
+            outputFaceBlendshapes: true
+          }
+        );
+
+        return faceLandmarker;
+      })();
+
+      //mostramos posibles errores al cargar MediaPipe
+      window.mediaPipeReady.catch(function (error) {
+        console.error("No se ha podido cargar MediaPipe:", error);
+      });
+    </script>
+  </head>
+
+  <body>
+    <!-- aquí se coloca el contenido principal -->
+    <main></main>
+
+    <!-- cargamos el código de la experiencia -->
+    <script src="sketch.js"></script>
+  </body>
+</html>
